@@ -60,6 +60,50 @@ st.markdown("""
         border: 1px solid #777777;
     }
     
+<<<<<<< HEAD
+    /* Style README content for better readability */
+    .readme-content {
+        background-color: #1A1A1A;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #333333;
+        color: #FFFFFF;
+        margin: 1rem 0;
+    }
+    
+    .readme-content h1, .readme-content h2, .readme-content h3 {
+        color: #FFFFFF;
+        border-bottom: 1px solid #333333;
+        padding-bottom: 0.5rem;
+    }
+    
+    .readme-content code {
+        background-color: #333333;
+        color: #FFFFFF;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+    }
+    
+    .readme-content pre {
+        background-color: #333333;
+        color: #FFFFFF;
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    
+    /* Style expander for dark theme */
+    .streamlit-expanderHeader {
+        background-color: #1A1A1A;
+        color: #FFFFFF;
+        border: 1px solid #333333;
+    }
+    
+    .streamlit-expanderContent {
+        background-color: #1A1A1A;
+        border: 1px solid #333333;
+        border-top: none;
+=======
     /* Style sliders for dark theme */
     .stSlider > div > div > div > div {
         background-color: #1A1A1A;
@@ -75,6 +119,50 @@ st.markdown("""
     
     .stSlider .stSlider-track {
         background-color: #333333;
+    }
+    
+    /* Style README content for better readability */
+    .readme-content {
+        background-color: #1A1A1A;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #333333;
+        color: #FFFFFF;
+        margin: 1rem 0;
+    }
+    
+    .readme-content h1, .readme-content h2, .readme-content h3 {
+        color: #FFFFFF;
+        border-bottom: 1px solid #333333;
+        padding-bottom: 0.5rem;
+    }
+    
+    .readme-content code {
+        background-color: #333333;
+        color: #FFFFFF;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+    }
+    
+    .readme-content pre {
+        background-color: #333333;
+        color: #FFFFFF;
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    
+    /* Style expander for dark theme */
+    .streamlit-expanderHeader {
+        background-color: #1A1A1A;
+        color: #FFFFFF;
+        border: 1px solid #333333;
+    }
+    
+    .streamlit-expanderContent {
+        background-color: #1A1A1A;
+        border: 1px solid #333333;
+        border-top: none;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -172,6 +260,28 @@ if st.button("Generate Chart with Slider Settings"):
     data = [random.randint(1, data_range) for _ in range(data_points)]
     st.line_chart(data)
     st.success(f"Generated chart with {data_points} points, max value {data_range}!")
+
+# README Contents Section
+st.markdown("---")
+st.markdown("""
+<div class="content-box">
+    <h3>📖 Project Documentation</h3>
+</div>
+""", unsafe_allow_html=True)
+
+# Read and display README contents
+try:
+    with open("README.md", "r", encoding="utf-8") as readme_file:
+        readme_content = readme_file.read()
+    
+    # Display README content using Streamlit's markdown with an expander for better UX
+    with st.expander("📖 View Full README Documentation", expanded=True):
+        st.markdown(readme_content)
+    
+except FileNotFoundError:
+    st.error("README.md file not found in the project directory.")
+except Exception as e:
+    st.error(f"Error reading README.md: {str(e)}")
 
 # Footer
 st.markdown("---")
